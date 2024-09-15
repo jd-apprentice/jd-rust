@@ -18,6 +18,17 @@ The project is using [make](https://www.gnu.org/software/make/) and [docker](htt
 
 You can run it with `make dev` for development and `make` for production
 
+## 🦀 Features
+
+- Github Actions (Quality Gate)
+- Dockerfile + docker-compose
+- Testing + Coverage
+- CODEOWNERS
+- Docker security (user/group, apparmor, seccomp, capabilities, etc.)
+- Github Release (optional)
+- Sentry (optional)
+- Dotenv (optional)
+
 ## 🦀 Contributing
 
 Check the [CONTRIBUTING.md](CONTRIBUTING.md) file

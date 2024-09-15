@@ -14,3 +14,11 @@ license = "MIT OR Apache-2.0"
 {% endif %}
 
 [dependencies]
+{% if dotenv == true %}
+dotenv = "0.15.0"
+{% endif %}
+
+{% if sentry == true %}
+sentry = "0.34.0"
+tokio = { version = "1", features = ["full"] }
+{% endif %}

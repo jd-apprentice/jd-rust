@@ -1,0 +1,40 @@
+use std::thread::sleep;
+
+{% if dotenv == true %}
+use dotenv;
+
+dotenv::dotenv().ok();
+{% endif %}
+
+#[path = "1_module/tests/add_sub.rs"]
+mod add_sub;
+#[path = "2_module/tests/mul_div.rs"]
+mod mul_div;
+
+fn main() {
+
+    {% if sentry == true %}
+    const _config: sentry::ClientInitGuard = sentry::init(({{ sentry_dsn }}, sentry::ClientOptions {
+        release: sentry::release_name!(),
+        ..Default::default()
+    }));
+    {% endif %}
+
+    const SLEEP_MESSAGE: &str = "Sleep forever...";
+    const HELLO_SENTRY: &str = "Hello, sentry!";
+    println!("{}", SLEEP_MESSAGE);
+    sleep(std::time::Duration::from_millis(f64::INFINITY as u64));
+
+    {% if sentry == true %}
+    tokio::runtime::Builder::new_multi_thread()
+            .enable_all()
+            .build()
+            .unwrap()
+            .block_on(async {
+                let _ = sentry::capture_message(HELLO_SENTRY, sentry::Level::Info);
+                println!("{}", HELLO_SENTRY);
+            });
+    {% endif %}
+}
+
+

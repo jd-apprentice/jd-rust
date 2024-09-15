@@ -18,10 +18,30 @@ choices = ["all", "MIT", "APACHE"]
 type = "string"
 prompt = "What is your email? (CONTRIBUTING, LICENSE, etc)"
 
+[placeholders.codeowner]
+type = "string"
+prompt = "What is your github username? (CODEOWNERS)"
+
 [placeholders.toolchain.channel]
 type = "string"
 prompt = "What is the rust toolchain version?"
 choices = ["stable", "beta", "nightly"]
+
+[placeholders.github_release]
+type = "bool"
+prompt = "Do you want to create a github release?"
+default = false
+
+## Dependencies
+[placeholders.dotenv]
+type = "bool"
+prompt = "Do you want to use dotenv?"
+default = false
+
+[placeholders.sentry]
+type = "bool"
+prompt = "Do you want to use sentry?"
+default = false
 
 # Conditions
 ## License
@@ -31,3 +51,17 @@ ignore = ["LICENSE-MIT"]
 
 [conditional.'license != "APACHE" && license != "all"']
 ignore = ["LICENSE-APACHE"]
+
+## Workflows
+[conditional.'github_release == false']
+ignore = [".github/workflows/release.yaml"]
+
+## Dependencies
+[conditional.'dotenv == false']
+ignore = [".env.example"]
+
+[conditional. 'sentry == true']
+type = "string"
+name = "sentry_dsn"
+prompt = "What is your sentry dsn?"
+default = "https://examplePublicKey@o0.ingest.sentry.io/0"
