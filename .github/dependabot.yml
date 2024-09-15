@@ -4,9 +4,9 @@ updates:
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
-      interval: "montly"
+      interval: "monthly"
 
   - package-ecosystem: "cargo"
     directory: "/backend"
     schedule:
-      interval: "montly"
+      interval: "monthly"
