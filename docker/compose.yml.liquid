@@ -1,0 +1,13 @@
+services:
+  {{ package_name }}:
+    image: rust_template
+    security_opt:
+      - apparmor:./docker/non-root-apparmor.profile
+      - no-new-privileges:true
+    cap_drop: ["ALL"]
+    networks:
+      - {{ package_name }}
+
+networks:
+  {{ package_name }}:
+    driver: bridge

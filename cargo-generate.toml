@@ -1,0 +1,28 @@
+# Parameters
+
+[template]
+cargo_generate_version = ">=0.22.0"
+exclude = ["assets", ".github/workflows/ci.yml"]
+
+[placeholders.package_name]
+type = "string"
+prompt = "What is the name of the package?"
+
+[placeholders.license]
+type = "string"
+prompt = "What licenses will the project have?"
+default = "all"
+choices = ["all", "MIT", "APACHE"]
+
+[placeholders.email]
+type = "string"
+prompt = "What is your email?"
+
+# Conditions
+## License
+
+[conditional.'license != "MIT" && license != "all"']
+ignore = ["LICENSE-MIT"]
+
+[conditional.'license != "APACHE" && license != "all"']
+ignore = ["LICENSE-APACHE"]
