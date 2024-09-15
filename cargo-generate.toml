@@ -2,7 +2,7 @@
 
 [template]
 cargo_generate_version = ">=0.22.0"
-exclude = ["assets", ".github/workflows/ci.yml"]
+exclude = ["assets"]
 
 [placeholders.package_name]
 type = "string"
@@ -16,7 +16,12 @@ choices = ["all", "MIT", "APACHE"]
 
 [placeholders.email]
 type = "string"
-prompt = "What is your email?"
+prompt = "What is your email? (CONTRIBUTING, LICENSE, etc)"
+
+[placeholders.toolchain.channel]
+type = "string"
+prompt = "What is the rust toolchain version?"
+choices = ["stable", "beta", "nightly"]
 
 # Conditions
 ## License
