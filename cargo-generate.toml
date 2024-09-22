@@ -22,7 +22,7 @@ prompt = "What is your email? (CONTRIBUTING, LICENSE, etc)"
 type = "string"
 prompt = "What is your github username? (CODEOWNERS)"
 
-[placeholders.toolchain.channel]
+[placeholders.toolchain]
 type = "string"
 prompt = "What is the rust toolchain version?"
 choices = ["stable", "beta", "nightly"]
