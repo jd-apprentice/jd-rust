@@ -10,7 +10,7 @@ prompt = "What is the name of the package?"
 
 [placeholders.package_description]
 type = "string"
-propt = "Enter a project description"
+prompt = "Enter a project description"
 
 [placeholders.license]
 type = "string"
