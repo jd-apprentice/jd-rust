@@ -1,7 +1,12 @@
 [package]
 name = "{{ package_name }}"
+description = "{{ package_description }}"
 version = "0.1.0"
 edition = "2021"
+documentation = ""
+repository = ""
+categories = ["command-line-utilities"]
+keywords = ["cli"]
 
 {% if license == "MIT" %}
 license = "MIT"
@@ -15,7 +20,7 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 {% if dotenv == true %}
-dotenv = "0.15.0"
+dotenvy = "0.15.7"
 {% endif %}
 
 {% if sentry == true %}

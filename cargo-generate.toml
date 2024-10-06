@@ -2,11 +2,15 @@
 
 [template]
 cargo_generate_version = ">=0.22.0"
-exclude = ["assets"]
+exclude = ["assets/*, Cargo.toml"]
 
 [placeholders.package_name]
 type = "string"
 prompt = "What is the name of the package?"
+
+[placeholders.package_description]
+type = "string"
+propt = "Enter a project description"
 
 [placeholders.license]
 type = "string"
@@ -47,21 +51,25 @@ default = false
 ## License
 
 [conditional.'license != "MIT" && license != "all"']
-ignore = ["LICENSE-MIT"]
+exclude = ["LICENSE-MIT"]
 
 [conditional.'license != "APACHE" && license != "all"']
-ignore = ["LICENSE-APACHE"]
+exclude = ["LICENSE-APACHE"]
 
 ## Workflows
 [conditional.'github_release == false']
-ignore = [".github/workflows/release.yaml"]
+exclude = [".github/workflows/release.yaml"]
 
 ## Dependencies
 [conditional.'dotenv == false']
-ignore = [".env.example"]
+exclude = [".env.example"]
 
 [conditional. 'sentry == true']
 type = "string"
 name = "sentry_dsn"
 prompt = "What is your sentry dsn?"
 default = "https://examplePublicKey@o0.ingest.sentry.io/0"
+
+## Files
+[conditional. 'sentry == false']
+exclude = ["./src/functions.rs"]

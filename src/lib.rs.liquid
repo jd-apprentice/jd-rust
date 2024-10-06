@@ -1,3 +1,8 @@
+{% if sentry == true %}
+mod functions;
+pub use functions::load_sentry;
+{% endif %}
+
 #[derive(Default)]
 pub struct MathOperation {
     pub operator: String,
