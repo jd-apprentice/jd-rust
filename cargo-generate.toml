@@ -2,7 +2,7 @@
 
 [template]
 cargo_generate_version = ">=0.22.0"
-exclude = ["./assets/wallpaper.png, Cargo.toml"]
+ignore = ["*.png, Cargo.toml"]
 
 [placeholders.package_name]
 type = "string"
@@ -46,14 +46,14 @@ default = false
 ## License
 
 [conditional.'license == MIT']
-exclude = ["LICENSE-APACHE"]
+ignore = ["LICENSE-APACHE"]
 
 [conditional. 'license == APACHE']
-exclude = ["LICENSE-MIT"]
+ignore = ["LICENSE-MIT"]
 
 ## Workflows
 [conditional.'github_release == false']
-exclude = [".github/workflows/release.yaml"]
+ignore = [".github/workflows/release.yaml"]
 
 ## Dependencies
 [conditional. 'sentry == true']
@@ -64,4 +64,4 @@ default = "https://examplePublicKey@o0.ingest.sentry.io/0"
 
 ## Files
 [conditional. 'sentry == false']
-exclude = ["./src/functions.rs", ".env.example"]
+ignore = ["./src/functions.rs", ".env.example"]
