@@ -1,3 +1,5 @@
+use std::env;
+
 /// # Panics
 /// Will panic if `SENTRY_DSN` is not set in the .env file
 #[inline]

@@ -5,16 +5,10 @@ version = "0.1.0"
 edition = "2021"
 documentation = ""
 repository = ""
-categories = ["command-line-utilities"]
-keywords = ["cli"]
+categories = ["{{ package_category }}"]
+keywords = ["{{ package_category }}"]
 {% if license == "MIT" %}
 license = "MIT"
-{% endif %}
-{% if license == "APACHE" %}
-license = "Apache-2.0"
-{% endif %}
-{% if license == "all" %}
-license = "MIT OR Apache-2.0"
 {% endif %}
 [dependencies]
 {% if sentry == true %}

@@ -13,10 +13,9 @@ type = "string"
 prompt = "Enter a project description"
 
 [placeholders.license]
-type = "string"
-prompt = "What licenses will the project have?"
-default = "all"
-choices = ["all", "MIT", "APACHE"]
+type = "bool"
+prompt = "Do you want to include a MIT License?"
+default = false
 
 [placeholders.email]
 type = "string"
@@ -30,6 +29,11 @@ prompt = "What is your github username? (CODEOWNERS)"
 type = "string"
 prompt = "What is the rust toolchain version?"
 choices = ["stable", "beta", "nightly"]
+
+[placeholders.package_category]
+type = "string"
+prompt = "What is the category of your package?"
+choices = ["accessibility", "aerospace", "algorithms", "asynchronous", "command-line-utilities", "web-programming", "config"]
 
 [placeholders.github_release]
 type = "bool"
@@ -45,11 +49,8 @@ default = false
 # Conditions
 ## License
 
-[conditional.'license == MIT']
-ignore = ["LICENSE-APACHE"]
-
-[conditional. 'license == APACHE']
-ignore = ["LICENSE-MIT"]
+[conditional.'license == false']
+exclude = ["LICENSE-MIT.liquid"]
 
 ## Workflows
 [conditional.'github_release == false']
