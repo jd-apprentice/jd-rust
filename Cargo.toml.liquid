@@ -7,7 +7,6 @@ documentation = ""
 repository = ""
 categories = ["command-line-utilities"]
 keywords = ["cli"]
-
 {% if license == "MIT" %}
 license = "MIT"
 {% endif %}
@@ -17,13 +16,8 @@ license = "Apache-2.0"
 {% if license == "all" %}
 license = "MIT OR Apache-2.0"
 {% endif %}
-
 [dependencies]
-{% if dotenv == true %}
-dotenvy = "0.15.7"
-{% endif %}
-
 {% if sentry == true %}
 sentry = "0.34.0"
-tokio = { version = "1", features = ["full"] }
+dotenvy = "0.15.7"
 {% endif %}
