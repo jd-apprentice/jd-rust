@@ -2,7 +2,7 @@
 
 [template]
 cargo_generate_version = ">=0.22.0"
-ignore = ["*.png, Cargo.toml"]
+ignore = ["assets/wallpaper.png, Cargo.toml"]
 
 [placeholders.package_name]
 type = "string"
@@ -62,7 +62,4 @@ type = "string"
 name = "sentry_dsn"
 prompt = "What is your sentry dsn?"
 default = "https://examplePublicKey@o0.ingest.sentry.io/0"
-
-## Files
-[conditional. 'sentry == false']
-ignore = ["./src/functions.rs", ".env.example"]
+include = [".env.example", "./src/functions.rs"]

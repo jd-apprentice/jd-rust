@@ -1,4 +1,9 @@
+app_name ?= {{ package_name }}
+
 all: test lint format docker compose
+
+start:
+	./target/release/{{ app_name }}
 
 dev:
 	cargo watch -x run
