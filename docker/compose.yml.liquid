@@ -3,7 +3,7 @@ services:
     image: rust_template
     security_opt:
       - apparmor:./docker/non-root-apparmor.profile
-      - no-new-privileges:true
+      - no-new-privileges
     cap_drop: ["ALL"]
     networks:
       - {{ package_name }}

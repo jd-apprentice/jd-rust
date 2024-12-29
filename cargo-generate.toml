@@ -2,7 +2,8 @@
 
 [template]
 cargo_generate_version = ">=0.22.0"
-ignore = ["assets/wallpaper.png, Cargo.toml"]
+ignore = ["./assets/wallpaper.png", "Cargo.toml"]
+exlude = ["./assets/wallpaper.png", "Cargo.toml"]
 
 [placeholders.package_name]
 type = "string"
@@ -51,10 +52,12 @@ default = false
 
 [conditional.'license == false']
 exclude = ["LICENSE-MIT.liquid"]
+ignore = ["LICENSE-MIT.liquid"]
 
 ## Workflows
 [conditional.'github_release == false']
-ignore = [".github/workflows/release.yaml"]
+ignore = [".github/workflows/release.yml"]
+exlude = [".github/workflows/release.yml"]
 
 ## Dependencies
 [conditional. 'sentry == true']
@@ -63,3 +66,7 @@ name = "sentry_dsn"
 prompt = "What is your sentry dsn?"
 default = "https://examplePublicKey@o0.ingest.sentry.io/0"
 include = [".env.example", "./src/functions.rs"]
+
+[conditional.'sentry == false']
+exclude = [".env.example", "./src/functions.rs"]
+ignore = [".env.example", "./src/functions.rs"]
