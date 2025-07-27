@@ -2,8 +2,8 @@
 
 [template]
 cargo_generate_version = ">=0.22.0"
-ignore = ["./assets/wallpaper.png", "Cargo.toml"]
-exlude = ["./assets/wallpaper.png", "Cargo.toml"]
+ignore = ["./assets/wallpaper.png", "Cargo.toml", ".github/workflows/release.yml"]
+exlude = ["./assets/wallpaper.png", "Cargo.toml", ".github/workflows/release.yml"]
 
 [placeholders.package_name]
 type = "string"
@@ -36,11 +36,6 @@ type = "string"
 prompt = "What is the category of your package?"
 choices = ["accessibility", "aerospace", "algorithms", "asynchronous", "command-line-utilities", "web-programming", "config"]
 
-[placeholders.github_release]
-type = "bool"
-prompt = "Do you want to create a github release?"
-default = false
-
 ## Dependencies
 [placeholders.sentry]
 type = "bool"
@@ -53,11 +48,6 @@ default = false
 [conditional.'license == false']
 exclude = ["LICENSE-MIT.liquid"]
 ignore = ["LICENSE-MIT.liquid"]
-
-## Workflows
-[conditional.'github_release == false']
-ignore = [".github/workflows/release.yml"]
-exlude = [".github/workflows/release.yml"]
 
 ## Dependencies
 [conditional. 'sentry == true']
