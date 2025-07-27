@@ -9,7 +9,6 @@ on:
       - dev
     paths:
       - "src/**/**.rs"
-      - "crates/**/**.rs"
 
 jobs:
   quality-gate:
